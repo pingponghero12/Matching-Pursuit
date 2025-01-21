@@ -1,0 +1,15 @@
+swish
+Correlation for FX: 0.8371
+Correlation for FY: 0.9983
+Correlation for FZ: 0.9972
+Correlation for TX: 0.3949
+Correlation for TY: 0.9652
+Correlation for TZ: 0.9574
+
+relu
+Correlation for FX: 0.8161
+Correlation for FY: 0.9973
+Correlation for FZ: 0.9973
+Correlation for TX: 0.1961
+Correlation for TY: 0.9490
+Correlation for TZ: 0.9649
