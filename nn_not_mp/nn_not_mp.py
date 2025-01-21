@@ -23,9 +23,17 @@ def main():
     y = df[output_cols].values
 
     model = tf.keras.Sequential([
-        tf.keras.layers.Dense(16, activation='relu', input_shape=(len(input_cols),)),
-        tf.keras.layers.Dense(16, activation='relu'),
-        tf.keras.layers.Dense(len(output_cols))  # 6 outputs: Fx, Fy, Fz, Tx, Ty, Tz
+        tf.keras.layers.Dense(128, activation='swish', input_shape=(len(input_cols),)),
+        tf.keras.layers.BatchNormalization(),
+        tf.keras.layers.Dense(256, activation='swish'),
+        tf.keras.layers.BatchNormalization(),
+        tf.keras.layers.Dense(512, activation='swish'),
+        tf.keras.layers.BatchNormalization(),
+        tf.keras.layers.Dense(256, activation='swish'),
+        tf.keras.layers.BatchNormalization(),
+        tf.keras.layers.Dense(128, activation='swish'),
+        tf.keras.layers.BatchNormalization(),
+        tf.keras.layers.Dense(len(output_cols), activation='linear')  # 6 outputs: Fx, Fy, Fz, Tx, Ty, Tz
     ])
 
     model.compile(
@@ -33,7 +41,7 @@ def main():
         loss='mse'
     )
 
-    model.fit(X, y, epochs=50, batch_size=32, verbose=0)
+    model.fit(X, y, epochs=200, batch_size=32, verbose=0)
 
     predictions = model.predict(X)
     correlations = []
