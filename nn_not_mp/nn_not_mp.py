@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 def main():
     print("dupa")
-    data_path = 'data/ad.csv'
+    data_path = 'data/s3v4_mach15.csv'
     df = pd.read_csv(data_path)
     print("dupa")
     mach_unique = df['MACH'].unique()
